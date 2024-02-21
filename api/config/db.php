@@ -3,7 +3,7 @@
     
         // specify your own database credentials
         private $host = "localhost";
-        private $db_name = "api_db";
+        private $db_name = "lista_tareas";
         private $username = "root";
         private $password = "";
         public $conn;
