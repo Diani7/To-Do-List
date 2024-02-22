@@ -60,5 +60,38 @@ class Task{
         return false;
  }
 
+    // update the task
+    function update(){
+    
+        // update query
+        $query = "UPDATE
+                    " . $this->table_name . "
+                SET
+                    name = :name,
+                    state = :state
+                WHERE
+                    id = :id";
+    
+        // prepare query statement
+        $preparedQuery = $this->conn->prepare($query);
+    
+        // sanitize
+        $this->name=htmlspecialchars(strip_tags($this->name));
+        $this->state=htmlspecialchars(strip_tags($this->state));
+        $this->id=htmlspecialchars(strip_tags($this->id));
+
+        // vincular valores
+        $preparedQuery->bindParam(":name", $this->name);
+        $preparedQuery->bindParam(":state", $this->state);
+        $preparedQuery->bindParam(':id', $this->id);
+    
+        // execute the query
+        if($preparedQuery->execute()){
+            return true;
+        }
+    
+        return false;
+    }
+
 }
 ?>

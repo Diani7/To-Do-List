@@ -2,13 +2,13 @@
 // encabezados requeridos
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Methods: PUT");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
   
 // incluir archivos de bases de datos y modelos
-include_once '../config/database.php';
-include_once '../models/product.php';
+include_once '../config/db.php';
+include_once '../models/task.php';
   
 // obtener conexión a la base de datos
 $database = new Database();
@@ -45,6 +45,6 @@ else{
     http_response_code(503);
   
     // mensaje no se puede actualizar la tarea
-    echo json_encode(array("message" => "Unable to update product."));
+    echo json_encode(array("message" => "Unable to update task."));
 }
 ?>
