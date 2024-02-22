@@ -62,34 +62,5 @@ class Task{
         return false;
  }
 
-    // utilizado al completar el formulario de actualización del producto
-    function readOne(){
-    
-        // consulta para leer un solo registro
-        $query = "SELECT
-                    t.name as list_tasks
-                FROM
-                    " . $this->table_name . " 
-                LIMIT
-                    0,1";
-    
-        // preparar declaración de consulta
-        $preparedQuery = $this->conn->prepare( $query );
-    
-        // vincular la identificación de la tarea que se actualizará
-        $preparedQuery->bindParam(1, $this->id);
-    
-        // ejecutar query
-        $preparedQuery->execute();
-    
-        // obtener fila recuperada
-        $row = $preparedQuery->fetch(PDO::FETCH_ASSOC);
-    
-        // establecer valores para las propiedades del objeto
-        $this->name = $row['name'];
-        $this->date = $row['date'];
-        $this->state = $row['state'];
-    }
-
 }
 ?>
