@@ -39,19 +39,17 @@ class Task{
         $query = "INSERT INTO
                     " . $this->table_name . "
                 SET
-                    name=:name, date=:date, state=:state";
+                    name=:name, state=:state";
     
         // preparar consulta
         $preparedQuery = $this->conn->prepare($query);
     
         // sanitize
         $this->name=htmlspecialchars(strip_tags($this->name));
-        $this->date=htmlspecialchars(strip_tags($this->date));
         $this->state=htmlspecialchars(strip_tags($this->state));
 
         // vincular valores
         $preparedQuery->bindParam(":name", $this->name);
-        $preparedQuery->bindParam(":date", $this->date);
         $preparedQuery->bindParam(":state", $this->state);
 
         // ejecutar query
