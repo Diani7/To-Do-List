@@ -1,14 +1,14 @@
 <?php
     class Database{
     
-        // specify your own database credentials
+        // especificación credenciales bases de datos 
         private $host = "localhost";
-        private $db_name = "lista_tareas";
+        private $db_name = "list_tasks";
         private $username = "root";
         private $password = "";
         public $conn;
     
-        // get the database connection
+        // función que permite obtener la conexión a la base de datos
         public function getConnection(){
     
             $this->conn = null;
