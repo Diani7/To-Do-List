@@ -1,6 +1,8 @@
 function updateTask(name, id, date, state) {
-    updateTaskRequest(id, name, date, state)
-    console.log(id, name, date, state)
+    const newName = prompt("Digite el nuevo nombre de la tarea")
+    updateTaskRequest(newName, id, date, state)
+    console.log(id, newName, date, state)
+    location.reload();
 }
 
 function handleStateChange (name, id, date, state) {
