@@ -1,6 +1,7 @@
 // Task model crud 
 class Task {
-    constructor(name, date = new Date(), state = "Pendiente") {
+    constructor(id, name, date = new Date(), state = "Pendiente") {
+        this.id = id;
         this.name = name;
         this.date = date;
         this.state = state;
@@ -22,9 +23,11 @@ class Task {
         this.name = name;
         return `the task with name: ${this.name} was created`
     }
+    
+    
 }
 
-function createTask() {
+function createTask() { 
     document.addEventListener("submit", (event) => {
         event.preventDefault();
         const taskName = document.getElementById("task_name");
@@ -48,3 +51,4 @@ function validateEmptyField(){
 
 
 
+    
