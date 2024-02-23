@@ -1,15 +1,15 @@
 <?php
-    // required headers
+    // encabezados requeridos
     header("Access-Control-Allow-Origin: *");
     header("Content-Type: application/json; charset=UTF-8");
     header("Access-Control-Allow-Methods: POST");
     header("Access-Control-Max-Age: 3600");
     header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
     
-    // get database connection
+    // conexión base de datos
     include_once '../config/db.php';
     
-    // instantiate task object
+    // instancia la tarea
     include_once '../models/task.php';
     
     $database = new Database();
@@ -17,47 +17,47 @@
     
     $task = new Task($db);
     
-    // get posted data
+    // obtener datos publicados
     $data = json_decode(file_get_contents("php://input"));
     
-    // make sure data is not empty
+    // validar que los datos no esten vacios
     // 
     if(
         !empty($data->name) &&
         !empty($data->state)
     ){
   
-        // set task property values
+        // establecer valores de tarea
         $task->name = $data->name;
         $task->state = $data->state;
 
     
-        // create the task
+        // crea la tarea
         if($task->create()){
     
-            // set response code - 201 created
+            // establecer código de respuesta - 200 OK
             http_response_code(201);
     
-            // tell the user
+            // mensaje al usuario
             echo json_encode(array("message" => "task was created."));
 
-        // if unable to create the task, tell the user  
+        // cuando no se puede crear la tarea
         } else { 
 
-            // set response code - 503 service unavailable
+            //  establecer código de respuesta  - 503 service unavailable
             http_response_code(503);
     
-            // tell the user
+            // mensaje
             echo json_encode(array("message" => "Unable to create task."));
         }
 
-    // tell the user data is incomplete  
+    // datos incompletos
     } else {
     
-        // set response code - 400 bad request
+        //  establecer código de respuesta  - 400 bad request
         http_response_code(400);
     
-        // tell the user
+        // mensaje
         echo json_encode(array("message" => "Unable to create task. Data is incomplete."));
     }
 ?>

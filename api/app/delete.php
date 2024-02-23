@@ -1,45 +1,45 @@
 <?php
-// required headers
+// encabezados requeridos
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: DELETE");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
   
-// include database and object file
+// incluir archivos de bases de datos y modelos
 include_once '../config/db.php';
 include_once '../models/task.php';
   
-// get database connection
+// conexión base de datos
 $database = new Database();
 $db = $database->getConnection();
   
 // prepare task object
 $task = new Task($db);
   
-// get task id
+// id de la tarea
 $data = json_decode(file_get_contents("php://input"));
   
 // set task id to be deleted
 $task->id = $data->id;
   
-// delete the product
+// eliminar tarea
 if($task->delete()){
   
-    // set response code - 200 ok
+    // establecer código de respuesta - 200 OK
     http_response_code(200);
   
-    // tell the user
+    // mensaje al usuario
     echo json_encode(array("message" => "task was deleted."));
 }
   
-// if unable to delete the product
+// cuano no se puede eliminar la tarea
 else{
   
-    // set response code - 503 service unavailable
+    // establecer código de respuesta - 503 service unavailable
     http_response_code(503);
   
-    // tell the user
+    // mensaje al usuario
     echo json_encode(array("message" => "Unable to delete task."));
 }
 ?>
