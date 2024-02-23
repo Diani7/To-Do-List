@@ -136,6 +136,7 @@
                                     id=delete_task_${task.id}
                                     class="btn btn-danger"
                                     type="button"
+                                    onclick="deleteTask(${task.id})"
                                 >
                                     Eliminar
                                 </button>
@@ -154,5 +155,6 @@
             }, 500);
         </script>
         <script src="app/update.js"></script>
+        <script src="app/delete.js"></script>
     </body>
 </html>
