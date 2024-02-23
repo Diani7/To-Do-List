@@ -9,7 +9,7 @@
     // get database connection
     include_once '../config/db.php';
     
-    // instantiate product object
+    // instantiate task object
     include_once '../models/task.php';
     
     $database = new Database();
