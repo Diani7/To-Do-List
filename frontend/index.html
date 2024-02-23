@@ -19,55 +19,7 @@
         <script src="services/index.js" type="text/javascript"></script>
         <script src="app/index.js" type="text/javascript">
         </script>
-        <script>
-            const tasks = [{
-                name: "hola",
-                date: "2024-02-22 00:44:35",
-                status: "pending"
-            },{
-                name: "hola2",
-                date: "2024-02-22 00:45:35",
-                status: "pending"
-            },{
-                name: "hola3",
-                date:"2024-02-22 00:48:35",
-                status: "pending"
-            }   
-            ]
-            tasks.forEach((task) => console.log(task.name));  
-            function test() {
-                
-                document.getElementById('tasks_body').innerHTML = '
-                            <td>Tarea1</td>
-                            <td>1/feb/2024</td>
-                           <td><select class="form-select" aria-label="Default select example">
-                                <option selected>Seleccionar...</option>
-                                <option value="1">Pendiente</option>
-                                <option value="2">Completado</option>
-                                <option value="3">Cancelado</option>
-                              </select></td> 
-                            <td>
-                                <input
-                                    name="update_task"
-                                    id="update_task"
-                                    class="btn btn-primary"
-                                    type="submit"
-                                    value="Editar"
-                                />
-                            </td>
-                            <td>
-                                <input
-                                    name="delete_task"
-                                    id="delete_task"
-                                    class="btn btn-danger"
-                                    type="submit"
-                                    value="Eliminar"
-                                />
-                            </td>
-                          </tr>'
 
-            }
-        </script>
     </head>
 
     <body>
@@ -143,6 +95,50 @@
 
         <script>
             src="index.js"
+        </script>
+
+        <script>
+            function test() {
+                console.log(tasks[0])
+
+                tasks.forEach((task) => {
+                    const row = document.createElement('tr');
+                    
+                    const html = `<td>${task.name}</td>
+                            <td>${task.date}</td>
+                           <td><select class="form-select" aria-label="Default select example">
+                                <option selected>Seleccionar...</option>
+                                <option value="1">Pendiente</option>
+                                <option value="2">Completado</option>
+                                <option value="3">Cancelado</option>
+                              </select></td> 
+                            <td>
+                                <input
+                                    name="update_task"
+                                    id="update_task"
+                                    class="btn btn-primary"
+                                    type="submit"
+                                    value="Editar"
+                                />
+                            </td>
+                            <td>
+                                <input
+                                    name="delete_task"
+                                    id="delete_task"
+                                    class="btn btn-danger"
+                                    type="submit"
+                                    value="Eliminar"
+                                />
+                            </td>
+                          </tr>`;
+                row.innerHTML = html;
+                document.getElementById('tasks_body').appendChild(row);
+
+                }); 
+                
+                
+            }
+            test();
         </script>
     </body>
 </html>
