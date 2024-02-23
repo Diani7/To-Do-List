@@ -45,18 +45,6 @@ function validateEmptyField(){
         addTask.disabled = true;
     }
 }
-add_task.addEventListener('click', () => {
-    task_name.show()
-})
 
-function updateTask() {
-    document.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const taskName = document.getElementById("task_name");
-        //console.log(taskName.value);
-        const task = new Task(taskName.value);
-        console.log("name", task.getName(), "date", task.getDate(), "state", task.getState());
-    })
-}
 
 
