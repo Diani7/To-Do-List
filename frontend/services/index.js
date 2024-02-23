@@ -8,6 +8,22 @@ async function getTasks (){
     return tasks;
 } 
 
+async function createTaskRequest (name, state){
+    let message = null
+    await fetch("http://localhost/listaTareasPana/api/app/create.php", {
+        method: "POST",
+        body: JSON.stringify({
+            name,
+            state
+        })
+    })
+    .then ((resp => resp.json()))
+    .then (response => {
+        message = response.message
+    })
+    return message;
+}
+
 async function deleteTaskRequest (id){
     let message = null
     await fetch("http://localhost/listaTareasPana/api/app/delete.php", {

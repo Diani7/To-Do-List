@@ -17,8 +17,8 @@
             crossorigin="anonymous"
         />
         <script src="services/index.js" type="text/javascript"></script>
-        <script src="app/create.js" type="text/javascript">
-        </script>
+        <script src="app/create.js" type="text/javascript"></script>
+        <script src="utils/index.js" type="text/javascript"></script>
         <script>
             let tasks
             (async () => {
@@ -113,11 +113,11 @@
                     const row = document.createElement('tr');
                     const html = `<td>${task.name}</td>
                             <td>${task.date}</td>
-                           <td><select class="form-select" aria-label="Default select example">
-                                <option selected>Seleccionar...</option>
-                                <option value="1">Pendiente</option>
-                                <option value="2">Completado</option>
-                                <option value="3">Cancelado</option>
+                           <td><select id=select_task_${task.id} class="form-select" aria-label="Default select example">
+                                
+                                <option value="1" ${task.state === 'pending' ? 'selected' : ''}>Pendiente</option>
+                                <option value="2" ${task.state === 'completed' ? 'selected' : ''}>Completado</option>
+                                <option value="3" ${task.state === 'cancelled' ? 'selected' : ''}>Cancelado</option>
                               </select></td> 
                             <td>
                                 <button
@@ -143,6 +143,8 @@
                             </td>
                           </tr>`;
                 row.innerHTML = html;
+               /*  const stateOption = document.getElementById(`select_task_${task.id}`)
+                stateOption.selectedIndex = getStateId(task.id) */
                 document.getElementById('tasks_body').appendChild(row);
 
                 }); 

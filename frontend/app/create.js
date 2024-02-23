@@ -1,7 +1,6 @@
 // Task model crud 
 class Task {
-    constructor(id, name, date = new Date(), state = "Pendiente") {
-        this.id = id;
+    constructor(name, date = new Date(), state = "pending") {
         this.name = name;
         this.date = date;
         this.state = state;
@@ -33,7 +32,11 @@ function createTask() {
         const taskName = document.getElementById("task_name");
         //console.log(taskName.value);
         const task = new Task(taskName.value);
-        console.log("name", task.getName(), "date", task.getDate(), "state", task.getState());
+        //console.log(task.getName())
+        createTaskRequest(task.getName(), task.getState())
+        setTimeout (() => {
+            location.reload()
+        }, 1000)
     })
 }
 createTask()
