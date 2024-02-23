@@ -1,9 +1,14 @@
 // Task model crud 
 class Task {
-    constructor(name, date = new Date(), state = "pending") {
+    constructor(name, id = null, date = new Date(), state = "pending") {
+        this.id = id;
         this.name = name;
         this.date = date;
         this.state = state;
+    }
+
+    getId(){
+        return this.id;
     }
 
     getName(){

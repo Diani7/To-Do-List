@@ -113,7 +113,7 @@
                     const row = document.createElement('tr');
                     const html = `<td>${task.name}</td>
                             <td>${task.date}</td>
-                           <td><select id=select_task_${task.id} class="form-select" aria-label="Default select example">
+                           <td><select id=select_task_${task.id} class="form-select" aria-label="Default select example" onchange="handleStateChange('${task.name}', '${task.id}', '${task.date}', this.value)">
                                 
                                 <option value="1" ${task.state === 'pending' ? 'selected' : ''}>Pendiente</option>
                                 <option value="2" ${task.state === 'completed' ? 'selected' : ''}>Completado</option>
@@ -125,7 +125,7 @@
                                     id=update_task_${task.id}
                                     class="btn btn-primary"
                                     type="button"
-                                    onclick="updateTask('${task.id}', '${task.name}', '${task.date}', '${task.state}')"
+                                    onclick="updateTask('${task.name}', '${task.id}', '${task.date}', '${task.state}')"
                                 >
                                     Editar
                                 </button>

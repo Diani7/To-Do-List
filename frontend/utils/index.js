@@ -1,12 +1,12 @@
 function getStateId (state){
     switch (state) {
-        case "completed":
-            return 2;
+        case '2':
+            return "completed";
 
-        case "cancelled":
-            return 3;
+        case '3':
+            return "cancelled";
 
         default:
-            return 1;
+            return "pending";
     }
 }
